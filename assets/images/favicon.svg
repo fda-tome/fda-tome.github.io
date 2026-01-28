@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" role="img" aria-label="Lowercase phi in brackets">
+  <rect width="64" height="64" fill="#ffffff"/>
+  <g fill="none" stroke="#000" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 4H6V60H12"/>
+    <path d="M52 4H58V60H52"/>
+    <ellipse cx="32" cy="33" rx="15.5" ry="18.5"/>
+    <path d="M32 4V60"/>
+  </g>
+</svg>

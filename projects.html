@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Felipe de Alc&acirc;ntara Tom&eacute; | Projects</title>
+    <meta
+      name="description"
+      content="Selected work in high-performance computing, distributed systems, GPU programming, and numerical linear algebra."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@300;400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
+    <script src="site.js" defer></script>
+  </head>
+  <body class="page-projects">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="logo" href="index.html">Felipe de Alc&acirc;ntara Tom&eacute;</a>
+        <nav class="nav" aria-label="Main">
+          <a class="nav-link home" href="index.html">About</a>
+          <a class="nav-link projects" href="projects.html" aria-current="page">Projects</a>
+          <a class="nav-link publications" href="publications.html">Publications</a>
+          <a class="nav-link blog" href="blog.html">Blog</a>
+          <a class="nav-link contact" href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="container hero">
+        <div class="reveal" style="--delay: 0.05s;">
+          <p class="eyebrow">Projects</p>
+          <h1>Selected work.</h1>
+          <p class="lead">
+            Selected work in high-performance computing, distributed systems,
+            GPU programming, and numerical linear algebra.
+          </p>
+        </div>
+        <div class="panel reveal" style="--delay: 0.15s;">
+          <h2>Featured</h2>
+          <p>
+            Research and engineering projects focused on performance,
+            scalability, and scientific computing.
+          </p>
+        </div>
+      </section>
+
+      <section class="container stack">
+        <div class="reveal" style="--delay: 0.2s;">
+          <h2>Projects</h2>
+          <div class="list">
+            <article class="list-item">
+              <p class="meta">Lead Researcher | 2025–present</p>
+              <h3>BOP (Balanced Orthogonal Propagation)</h3>
+              <p>
+                Devising a novel wave propagation method using red-blue
+                pebbling scheduling techniques (COSMA-like) to accelerate
+                seismic imaging and leverage accelerators (GPUs).
+              </p>
+            </article>
+            <article class="list-item">
+              <p class="meta">Researcher | 2022–2024</p>
+              <h3>Acoustic Frozen Waves (AFW)</h3>
+              <p>
+                Ran high-performance simulations of acoustic frozen waves to
+                validate partial-wave models, achieving 31x faster runtimes and
+                demonstrating applications such as volumetric displays
+                (holograms).
+              </p>
+            </article>
+            <article class="list-item">
+              <p class="meta">Maintainer | 2024-present</p>
+              <h3>Dagger.jl</h3>
+              <p>
+                Maintained Dagger.jl as part of a two-person team, implemented
+                the MPI backend, and scaled distributed runs to 500+ nodes on
+                the Aurora supercomputer. Built multi-GPU array support, added
+                data dependency annotations, and delivered QR/LU/Cholesky
+                factorizations that rival vendor libraries.
+              </p>
+            </article>
+            <article class="list-item">
+              <p class="meta">Co-creator | 2025</p>
+              <h3>NextLA.jl</h3>
+              <p>
+                Implemented base kernels and the CAQR factorization
+                sub-kernels for a suite of high-performance linear algebra
+                routines.
+              </p>
+            </article>
+            <article class="list-item">
+              <p class="meta">Contributor | 2024–present</p>
+              <h3>SmartSolve.jl</h3>
+              <p>
+                Built a benchmark suite that compares against all PETSc solver
+                types and all backends to evaluate performance tradeoffs.
+              </p>
+            </article>
+          </div>
+        </div>
+
+        <div class="panel soft reveal" style="--delay: 0.25s;">
+          <h2>Want to collaborate?</h2>
+          <p>E-mail me and we can talk about projects.</p>
+          <a class="button secondary" href="mailto:felipe0@mit.edu">Email me</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>Hosted on GitHub Pages.</p>
+      </div>
+    </footer>
+  </body>
+</html>

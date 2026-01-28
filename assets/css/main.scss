@@ -1,0 +1,63 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+
+$sans-serif: "Space Grotesk", "Helvetica Neue", Arial, sans-serif;
+$serif: "Space Grotesk", "Helvetica Neue", Arial, sans-serif;
+$monospace: "JetBrains Mono", "Fira Code", "Source Code Pro", monospace;
+
+@import "minimal-mistakes/skins/contrast";
+@import "minimal-mistakes";
+
+.author__avatar img {
+  max-width: 160px;
+}
+
+.layout--single.centered .page__inner-wrap,
+.layout--single.centered .page__content {
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.layout--single.centered .page,
+.layout--home.centered .archive {
+  float: none;
+  width: 100%;
+  max-width: none;
+  margin-left: auto;
+  margin-right: auto;
+  padding-inline-end: 0;
+}
+
+.layout--single.centered .page__inner-wrap {
+  width: 100%;
+  max-width: 44rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.layout--single.centered .page__content {
+  max-width: 44rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.layout--home.centered .archive {
+  max-width: 44rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.layout--home.centered .archive .grid__wrapper {
+  margin-inline-end: 0;
+}
+
+@media (max-width: 768px) {
+  .author__avatar img {
+    max-width: 140px;
+  }
+}
