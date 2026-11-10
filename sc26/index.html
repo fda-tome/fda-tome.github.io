@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Felipe de Alc&acirc;ntara Tom&eacute; | SC26 Dagger.jl tutorial</title>
+    <meta
+      name="description"
+      content="One command to install and start the SC26 Dagger.jl tutorial console."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@300;400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml" />
+    <script src="../site.js" defer></script>
+    <style>
+      .command {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 14px 0 6px;
+        padding: 14px 16px;
+        border-radius: 12px;
+        background: #101010;
+        color: #f3efe6;
+      }
+      .command code {
+        flex: 1;
+        min-width: 0;
+        overflow-x: auto;
+        white-space: nowrap;
+        font: 0.95rem/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      }
+      .command button {
+        flex: none;
+        padding: 6px 14px;
+        border: 1px solid rgba(243, 239, 230, 0.4);
+        border-radius: 999px;
+        background: transparent;
+        color: inherit;
+        font-family: var(--font-display);
+        cursor: pointer;
+      }
+      .command button:hover {
+        border-color: #f3efe6;
+      }
+      .steps {
+        margin: 10px 0 0;
+        padding-left: 1.3em;
+      }
+      .steps li + li {
+        margin-top: 6px;
+      }
+      p code,
+      li code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 0.9em;
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="logo" href="../index.html">Felipe de Alc&acirc;ntara Tom&eacute;</a>
+        <nav class="nav" aria-label="Main">
+          <a class="nav-link home" href="../index.html">About</a>
+          <a class="nav-link projects" href="../projects.html">Projects</a>
+          <a class="nav-link publications" href="../publications.html">Publications</a>
+          <a class="nav-link blog" href="../blog.html">Blog</a>
+          <a class="nav-link contact" href="../contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="container hero">
+        <div class="reveal" style="--delay: 0.05s;">
+          <p class="eyebrow">SC26 tutorial</p>
+          <h1>Dagger.jl tutorial console</h1>
+          <p class="lead">
+            One command installs the tutorial, logs you in to Odo, and opens the
+            console in your browser.
+          </p>
+        </div>
+        <div class="panel reveal" style="--delay: 0.15s;">
+          <h2>You need</h2>
+          <p>
+            An OLCF account with access to Odo, and your PASSCODE (PIN followed
+            by the RSA token code). Nothing else: no Git, no GitHub account, and
+            no Python or Julia on your computer.
+          </p>
+        </div>
+      </section>
+
+      <section class="container stack">
+        <div class="panel reveal" style="--delay: 0.2s;">
+          <h2>macOS or Linux</h2>
+          <p>Open a terminal and run:</p>
+          <div class="command">
+            <code id="install-command">curl -fsSL https://fda-tome.github.io/sc26/install.sh | sh</code>
+            <button type="button" data-copy="install-command">Copy</button>
+          </div>
+          <ol class="steps">
+            <li>
+              It downloads the tutorial into <code>~/sc26-dagger</code>. If you
+              have no Python 3.9 or newer, it also puts a private one there; it
+              needs no administrator rights.
+            </li>
+            <li>It asks for your OLCF username, then for your PASSCODE to log in to Odo.</li>
+            <li>
+              It opens the console at
+              <a class="text-link" href="http://127.0.0.1:8767">http://127.0.0.1:8767</a>.
+              Keep the terminal open while you work; close it to stop.
+            </li>
+          </ol>
+          <p>
+            Run the same command again to update the tutorial and start again.
+            Your results and your <code>exercise/my_cholesky.jl</code> are kept.
+          </p>
+        </div>
+
+        <div class="panel reveal" style="--delay: 0.25s;">
+          <h2>Windows</h2>
+          <p>
+            The console needs an SSH feature that Windows' own <code>ssh</code>
+            lacks, so it runs inside WSL (Linux on Windows):
+          </p>
+          <ol class="steps">
+            <li>
+              Once: open PowerShell as administrator, run <code>wsl --install</code>,
+              and restart.
+            </li>
+            <li>Open <em>Ubuntu</em> from the Start menu and run the command above there.</li>
+            <li>
+              If no browser opens, go to
+              <a class="text-link" href="http://127.0.0.1:8767">http://127.0.0.1:8767</a>
+              in Windows.
+            </li>
+          </ol>
+        </div>
+
+        <div class="panel soft reveal" style="--delay: 0.3s;">
+          <h2>What it changes on your computer</h2>
+          <p>
+            Everything lives in <code>~/sc26-dagger</code>, except one marked
+            Odo entry the console adds to <code>~/.ssh/config</code> and its
+            connection file in <code>~/.ssh/control/</code>. To remove it all,
+            delete <code>~/sc26-dagger</code> and that marked entry.
+            Read the script first:
+            <a class="text-link" href="install.sh">install.sh</a>.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>Hosted on GitHub Pages.</p>
+      </div>
+    </footer>
+
+    <script>
+      document.querySelectorAll("[data-copy]").forEach(function (button) {
+        button.addEventListener("click", function () {
+          var text = document.getElementById(button.dataset.copy).textContent;
+          navigator.clipboard.writeText(text).then(function () {
+            button.textContent = "Copied";
+            setTimeout(function () { button.textContent = "Copy"; }, 1500);
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
