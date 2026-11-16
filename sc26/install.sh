@@ -17,7 +17,7 @@
 #
 # Options (environment variables):
 #   SC26_HOME  install folder           (default: ~/sc26-dagger)
-#   SC26_REF   GitHub branch or tag     (default: heads/fda/experimental-console;
+#   SC26_REF   GitHub branch or tag     (default: heads/main;
 #              for a tag use tags/<name>)
 #   SC26_REPO  GitHub repository        (default: JuliaParallel/julia-hpc-tutorial-sc26)
 # Console options go after `sh -s --`, e.g.
@@ -25,7 +25,7 @@
 set -eu
 
 repo=${SC26_REPO:-JuliaParallel/julia-hpc-tutorial-sc26}
-ref=${SC26_REF:-heads/fda/experimental-console}
+ref=${SC26_REF:-heads/main}
 subdir=02-Parallel-Programming/Dagger
 home=${SC26_HOME:-$HOME/sc26-dagger}
 tools=$home/.tools
