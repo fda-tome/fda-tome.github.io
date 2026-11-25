@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Felipe de Alc&acirc;ntara Tom&eacute; | Resume</title>
+    <meta
+      name="description"
+      content="Resume of Felipe Tomé: experience, education, awards, and service in GPU and distributed numerical linear algebra."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@300;400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
+    <script src="site.js" defer></script>
+  </head>
+  <body class="page-resume">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="logo" href="index.html">Felipe de Alc&acirc;ntara Tom&eacute;</a>
+        <nav class="nav" aria-label="Main">
+          <a class="nav-link home" href="index.html">About</a>
+          <a class="nav-link resume" href="resume.html" aria-current="page">Resume</a>
+          <a class="nav-link projects" href="projects.html">Projects</a>
+          <a class="nav-link publications" href="publications.html">Publications</a>
+          <a class="nav-link blog" href="blog.html">Blog</a>
+          <a class="nav-link contact" href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="container hero">
+        <div class="reveal" style="--delay: 0.05s;">
+          <p class="eyebrow">Resume</p>
+          <h1>Experience and education.</h1>
+          <p class="lead">
+            Research software engineer at MIT's Julia Lab and MS student
+            building GPU and distributed numerical linear algebra, dense and
+            sparse.
+          </p>
+        </div>
+        <div class="panel reveal" style="--delay: 0.15s;">
+          <h2>Download</h2>
+          <p>The two-page resume, updated November 2026.</p>
+          <a class="button" href="assets/Felipe-Tome-Resume.pdf">Resume (PDF)</a>
+        </div>
+      </section>
+
+      <section class="container stack">
+        <div class="reveal" style="--delay: 0.2s;">
+          <h2>Experience</h2>
+          <div class="list">
+            <article class="list-item">
+              <p class="meta">Apr 2024 &ndash; Present | Cambridge, MA, USA</p>
+              <h3>Research Software Engineer, MIT Julia Lab</h3>
+              <p class="sub">CSAIL, Prof. Alan Edelman</p>
+              <ul>
+                <li>
+                  Implemented the MPI backend of Dagger.jl (non-blocking and
+                  one-sided RMA communication) and scaled runs to
+                  <strong>500+ nodes on Argonne's Aurora supercomputer</strong>.
+                </li>
+                <li>
+                  Designed Dagger.jl's multi-GPU array API (map-reduce, core
+                  linear algebra) for NVIDIA (CUDA), AMD (ROCm) and Apple GPUs;
+                  ran Cholesky on <strong>256 AMD GPU nodes of LLNL's Tuolumne</strong>.
+                </li>
+                <li>
+                  Co-maintain Dagger.jl, a task runtime like Legion and PaRSEC:
+                  <strong>100+ releases, 60+ contributors, 730+ GitHub stars</strong>;
+                  used at CERN, CESMIX, Barcelona Supercomputing Center and INPE.
+                </li>
+                <li>
+                  Co-authored two funded research proposals; integrated the
+                  LAMMPS C++ code with Julia.
+                </li>
+                <li>
+                  <em>Stack:</em> Julia, MPI.jl, CUDA.jl, AMDGPU.jl (ROCm),
+                  KernelAbstractions.jl, GitHub Actions CI, Slurm.
+                </li>
+              </ul>
+            </article>
+            <article class="list-item">
+              <p class="meta">2025 &ndash; 2026</p>
+              <h3>Google Summer of Code Mentor, The Julia Language</h3>
+              <p class="sub">Dagger.jl</p>
+              <ul>
+                <li>
+                  Co-mentored <strong>two contributors, both presenting ACM SRC
+                  posters</strong> (SC25, SC26): MPI one-sided (RMA) integration
+                  and graph partitioning, and GPU multi-stream execution on CUDA
+                  and ROCm.
+                </li>
+              </ul>
+            </article>
+            <article class="list-item">
+              <p class="meta">Jan 2024 &ndash; Mar 2024 | Cambridge, MA, USA</p>
+              <h3>Visiting Researcher, MIT Julia Lab</h3>
+              <p class="sub">CSAIL</p>
+              <ul>
+                <li>
+                  Implemented and benchmarked task-parallel QR, LU and Cholesky
+                  factorizations in Julia that <strong>matched or exceeded Intel
+                  oneMKL</strong> on selected Intel CPU configurations.
+                </li>
+                <li>
+                  Co-led the creation of NextLA.jl, a native Julia
+                  BLAS/LAPACK-style library (v0.1.0); co-authored the
+                  <strong>IEEE HPEC 2024 Best Short Paper</strong> on generic
+                  Julia linear algebra across CPUs and GPUs.
+                </li>
+                <li>
+                  Added OpenMP-style data-dependency annotations (Datadeps) to
+                  Dagger.jl (IEEE HPEC 2024).
+                </li>
+              </ul>
+            </article>
+            <article class="list-item">
+              <p class="meta">May 2023 &ndash; Aug 2023</p>
+              <h3>Google Summer of Code Contributor, The Julia Language</h3>
+              <p class="sub">Dagger.jl</p>
+              <ul>
+                <li>
+                  Built MPI-backed distributed arrays for Dagger.jl, including
+                  distributed QR, LU and Cholesky.
+                </li>
+                <li>
+                  Finished Dagger.jl's move from lazy to eager execution; array
+                  operations <strong>up to 60% faster</strong>.
+                </li>
+              </ul>
+            </article>
+            <article class="list-item">
+              <p class="meta">Jun 2021 &ndash; Dec 2024 | Brazil</p>
+              <h3>Undergraduate Researcher, University of S&atilde;o Paulo (USP)</h3>
+              <ul>
+                <li>
+                  Developed Julia simulation codes for non-diffracting acoustic
+                  beams (frozen waves), published in <strong>JASA (2026)</strong>,
+                  and a vectorized Barnes-Hut N-body code in Python.
+                </li>
+              </ul>
+            </article>
+          </div>
+        </div>
+
+        <div class="reveal" style="--delay: 0.25s;">
+          <h2>Education</h2>
+          <div class="list">
+            <article class="list-item">
+              <p class="meta">Aug 2025 &ndash; Present (expected Aug 2027)</p>
+              <h3>MS in Computer Science, Federal University of S&atilde;o Carlos (UFSCar)</h3>
+              <p class="sub">S&atilde;o Carlos, Brazil</p>
+              <p>
+                GPA <strong>4.0/4.0</strong>. Advisor: Prof. Hermes Senger.
+                Research: <a href="projects.html#wave-propagation">wave
+                propagation on GPU tensor cores</a>.
+              </p>
+            </article>
+            <article class="list-item">
+              <p class="meta">Mar 2020 &ndash; Dec 2024</p>
+              <h3>BEng in Computer Engineering, University of S&atilde;o Paulo (USP)</h3>
+              <p class="sub">S&atilde;o Carlos, Brazil</p>
+              <p>
+                GPA 8.1/10. Thesis: simulation of acoustic frozen waves with
+                Julia in HPC environments.
+              </p>
+            </article>
+          </div>
+        </div>
+
+        <div class="panel reveal" style="--delay: 0.3s;">
+          <h2>Awards, funding and selective programs</h2>
+          <div class="list">
+            <article class="list-item">
+              <p class="meta">2025</p>
+              <p>
+                Argonne Training Program on Extreme-Scale Computing (ATPESC),
+                Argonne National Laboratory.
+              </p>
+            </article>
+            <article class="list-item">
+              <p class="meta">2024 &ndash; 2025</p>
+              <p>
+                IEEE TCPP HPC Student Cohort (inaugural), with travel grants
+                for SC24 and IPDPS 2025.
+              </p>
+            </article>
+            <article class="list-item">
+              <p class="meta">2024 &ndash; 2026</p>
+              <p>Student Volunteer at SC24, SC25 and SC26.</p>
+            </article>
+            <article class="list-item">
+              <p class="meta">2024</p>
+              <p>
+                <strong>Best Short Paper Award</strong>, IEEE High Performance
+                Extreme Computing Conference (HPEC 2024).
+              </p>
+            </article>
+            <article class="list-item">
+              <p class="meta">2020 &ndash; 2024</p>
+              <p>
+                FAPESP and CNPq undergraduate research scholarships, including
+                a funded research stay at MIT.
+              </p>
+            </article>
+          </div>
+        </div>
+
+        <div class="panel soft reveal" style="--delay: 0.35s;">
+          <h2>Service and teaching</h2>
+          <div class="list">
+            <article class="list-item">
+              <p class="meta">Program committee</p>
+              <p>
+                Workshop on Accelerator Programming and Directives (WACCPD) at
+                SC25 and SC26.
+              </p>
+            </article>
+            <article class="list-item">
+              <p class="meta">Reviewer</p>
+              <p>
+                SC24, ICPP 2025, ACM Transactions on Mathematical Software
+                (TOMS), WACCPD.
+              </p>
+            </article>
+            <article class="list-item">
+              <p class="meta">Teaching</p>
+              <p>
+                Teaching assistant for electromagnetism courses at USP (three
+                semesters, 2022 &ndash; 2024); guest coordinator of an MPI and
+                CUDA workshop at the National Laboratory for Scientific
+                Computing (LNCC), Brazil, Feb 2024.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>Hosted on GitHub Pages. Last updated November 2026.</p>
+      </div>
+    </footer>
+  </body>
+</html>

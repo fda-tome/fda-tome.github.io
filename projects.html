@@ -6,7 +6,7 @@
     <title>Felipe de Alc&acirc;ntara Tom&eacute; | Projects</title>
     <meta
       name="description"
-      content="Selected work in high-performance computing, distributed systems, GPU programming, and numerical linear algebra."
+      content="Projects in GPU and distributed numerical linear algebra: QR-Ω, sparse solvers for MIT's CHEFSI center, wave propagation on tensor cores, Dagger.jl and NextLA.jl."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -26,6 +26,7 @@
         <a class="logo" href="index.html">Felipe de Alc&acirc;ntara Tom&eacute;</a>
         <nav class="nav" aria-label="Main">
           <a class="nav-link home" href="index.html">About</a>
+          <a class="nav-link resume" href="resume.html">Resume</a>
           <a class="nav-link projects" href="projects.html" aria-current="page">Projects</a>
           <a class="nav-link publications" href="publications.html">Publications</a>
           <a class="nav-link blog" href="blog.html">Blog</a>
@@ -40,16 +41,27 @@
           <p class="eyebrow">Projects</p>
           <h1>Selected work.</h1>
           <p class="lead">
-            Selected work in high-performance computing, distributed systems,
-            GPU programming, and numerical linear algebra.
+            GPU and distributed numerical linear algebra, dense and sparse, and
+            the task runtime that schedules it.
           </p>
         </div>
         <div class="panel reveal" style="--delay: 0.15s;">
-          <h2>Featured</h2>
-          <p>
-            Research and engineering projects focused on performance,
-            scalability, and scientific computing.
-          </p>
+          <h2>Tools</h2>
+          <div class="tags">
+            <span class="tag">C++/CUDA</span>
+            <span class="tag">CUTLASS/CuTe</span>
+            <span class="tag">cuBLASLt</span>
+            <span class="tag">NVSHMEM</span>
+            <span class="tag">NCCL</span>
+            <span class="tag">Nsight Compute</span>
+            <span class="tag">PETSc</span>
+            <span class="tag">MPI</span>
+            <span class="tag">Julia</span>
+            <span class="tag">CUDA.jl</span>
+            <span class="tag">AMDGPU.jl (ROCm)</span>
+            <span class="tag">KernelAbstractions.jl</span>
+            <span class="tag">Slurm</span>
+          </div>
         </div>
       </section>
 
@@ -57,51 +69,160 @@
         <div class="reveal" style="--delay: 0.2s;">
           <h2>Projects</h2>
           <div class="list">
-            <article class="list-item">
-              <p class="meta">Lead Researcher | 2025–present</p>
-              <h3>BOP (Balanced Orthogonal Propagation)</h3>
-              <p>
-                Devising a novel wave propagation method using red-blue
-                pebbling scheduling techniques (COSMA-like) to accelerate
-                seismic imaging and leverage accelerators (GPUs).
+            <article class="list-item" id="qr-omega">
+              <p class="meta">MIT and UFSCar | 2026 &ndash; Present</p>
+              <h3>QR-&Omega;: communication-avoiding 2.5D Householder QR on GPUs</h3>
+              <ul>
+                <li>
+                  Designed and implemented a C++/CUDA Householder QR
+                  <strong>1.4&ndash;2.2&times; faster than tuned cuSOLVER</strong>
+                  and <strong>up to 11.9&times; faster than MAGMA and SLATE</strong>
+                  below n = 32,000 on one NVIDIA H200; at large n it reaches
+                  <strong>82&ndash;88% of GEMM throughput</strong> and matches
+                  cuSOLVER with 60% of its residual.
+                </li>
+                <li>
+                  Tall-skinny matrices: <strong>up to 3.3&times; faster than
+                  cuSOLVER</strong>, <strong>83&times; faster</strong> than MAGMA
+                  and SLATE.
+                </li>
+                <li>
+                  Added tensor-core modes that reach <strong>249 TFLOP/s in
+                  TF32</strong> (5.3&times; the fastest FP32 library) and
+                  <strong>94 TFLOP/s in 3&times;TF32</strong>, which keeps
+                  FP32-class accuracy at 2.0&times; the speed.
+                </li>
+                <li>
+                  Extended it to <strong>eight H200 GPUs</strong>, where it is
+                  the fastest library at every size and precision tested:
+                  <strong>1.02&ndash;1.12&times; ahead of cuSOLVERMp</strong>
+                  and up to <strong>1,327 TFLOP/s</strong> (TF32, n = 327,680).
+                </li>
+                <li>
+                  <em>Stack:</em> C++/CUDA, CUTLASS/CuTe kernels, cuBLASLt,
+                  NVSHMEM, NCCL, Nsight Compute profiling.
+                </li>
+              </ul>
+              <p class="links">
+                <a class="text-link" href="https://sc26.supercomputing.org/proceedings/posters/poster_pages/src_post146.html">SC26 ACM SRC poster</a>
               </p>
             </article>
-            <article class="list-item">
-              <p class="meta">Researcher | 2022–2024</p>
-              <h3>Acoustic Frozen Waves (AFW)</h3>
-              <p>
-                Ran high-performance simulations of acoustic frozen waves to
-                validate partial-wave models, achieving 31x faster runtimes and
-                demonstrating applications such as volumetric displays
-                (holograms).
+
+            <article class="list-item" id="chefsi">
+              <p class="meta">MIT's DOE/NNSA PSAAP-IV exascale simulation center | Oct 2025 &ndash; Present</p>
+              <h3>Sparse linear solvers for CHEFSI</h3>
+              <ul>
+                <li>
+                  Built a C++17 PETSc benchmark suite sweeping Krylov solvers
+                  and preconditioners on CPU and GPU (cuSPARSE, cuSOLVER):
+                  sparse direct (MUMPS, SuperLU_DIST, STRUMPACK), multigrid
+                  (GAMG, BoomerAMG) and additive Schwarz; tuned GAMG and ASM
+                  with Optuna (Python).
+                </li>
+                <li>
+                  Develop distributed mixed-precision sparse solvers (Julia,
+                  PETSc/C) with SmartSolve.jl's LLM proposer-refiner agents,
+                  <strong>2&ndash;10&times; faster than the application team's
+                  solver</strong>: Schwarz and incomplete-Cholesky
+                  preconditioned CG, Float32 factors under Float64 refinement,
+                  MPI SpMV.
+                </li>
+              </ul>
+              <p class="links">
+                <a class="text-link" href="https://github.com/Smart-Solve-AI/SmartSolve.jl">SmartSolve.jl on GitHub</a>
               </p>
             </article>
-            <article class="list-item">
-              <p class="meta">Maintainer | 2024-present</p>
+
+            <article class="list-item" id="wave-propagation">
+              <p class="meta">FAPESP master's project, UFSCar | Aug 2025 &ndash; Present</p>
+              <h3>Wave propagation on GPU tensor cores</h3>
+              <ul>
+                <li>
+                  Recast finite-difference seismic wave propagation as
+                  superstep matrix operators (exponential integration of the
+                  sparse spatial operator), compressed by selected Schur
+                  decomposition and Balanced POD so time stepping runs as
+                  batched mixed-precision GEMM/TRSM on tensor cores.
+                </li>
+                <li>
+                  Build the reduced bases with Krylov methods (GMRES, rational
+                  Krylov, shift-invert) on structured sparse operators; target
+                  2D/3D acoustic benchmarks for seismic imaging (RTM, FWI).
+                </li>
+                <li>
+                  <em>Stack:</em> C++/CUDA (cuBLAS, WMMA tensor cores), MPI,
+                  CMake, GoogleTest, Git, Linux.
+                </li>
+              </ul>
+            </article>
+
+            <article class="list-item" id="dagger">
+              <p class="meta">MIT Julia Lab and Google Summer of Code | 2023 &ndash; Present</p>
               <h3>Dagger.jl</h3>
-              <p>
-                Maintained Dagger.jl as part of a two-person team, implemented
-                the MPI backend, and scaled distributed runs to 500+ nodes on
-                the Aurora supercomputer. Built multi-GPU array support, added
-                data dependency annotations, and delivered QR/LU/Cholesky
-                factorizations that rival vendor libraries.
+              <ul>
+                <li>
+                  Co-maintain Dagger.jl, a Julia task runtime like Legion and
+                  PaRSEC: <strong>100+ releases, 60+ contributors, 730+ GitHub
+                  stars</strong>; used at CERN, CESMIX, Barcelona
+                  Supercomputing Center and INPE.
+                </li>
+                <li>
+                  Implemented the MPI backend (non-blocking and one-sided RMA
+                  communication) and scaled runs to <strong>500+ nodes on
+                  Argonne's Aurora supercomputer</strong>.
+                </li>
+                <li>
+                  Designed the multi-GPU array API (map-reduce, core linear
+                  algebra) for NVIDIA (CUDA), AMD (ROCm) and Apple GPUs; ran
+                  Cholesky on <strong>256 AMD GPU nodes of LLNL's
+                  Tuolumne</strong>.
+                </li>
+                <li>
+                  Added OpenMP-style data-dependency annotations (Datadeps),
+                  published at IEEE HPEC 2024.
+                </li>
+                <li>
+                  As a 2023 Google Summer of Code contributor, built MPI-backed
+                  distributed arrays (distributed QR, LU and Cholesky) and
+                  finished the move from lazy to eager execution, making array
+                  operations <strong>up to 60% faster</strong>.
+                </li>
+                <li>
+                  Co-mentored two Google Summer of Code contributors (2025,
+                  2026), both presenting ACM SRC posters at SC25 and SC26.
+                </li>
+              </ul>
+              <p class="links">
+                <a class="text-link" href="https://github.com/JuliaParallel/Dagger.jl">Dagger.jl on GitHub</a>
               </p>
             </article>
-            <article class="list-item">
-              <p class="meta">Co-creator | 2025</p>
+
+            <article class="list-item" id="nextla">
+              <p class="meta">Co-creator, MIT Julia Lab | 2024</p>
               <h3>NextLA.jl</h3>
               <p>
-                Implemented base kernels and the CAQR factorization
-                sub-kernels for a suite of high-performance linear algebra
-                routines.
+                Co-led the creation of NextLA.jl, a native Julia
+                BLAS/LAPACK-style library (v0.1.0), and co-authored the
+                <strong>IEEE HPEC 2024 Best Short Paper</strong> on generic
+                Julia linear algebra across CPUs and GPUs.
+              </p>
+              <p class="links">
+                <a class="text-link" href="https://ieee-hpec.org/wp-content/uploads/2025/01/161.pdf">HPEC 2024 paper</a>
               </p>
             </article>
-            <article class="list-item">
-              <p class="meta">Contributor | 2024–present</p>
-              <h3>SmartSolve.jl</h3>
+
+            <article class="list-item" id="frozen-waves">
+              <p class="meta">Undergraduate research, USP | 2021 &ndash; 2024</p>
+              <h3>Acoustic frozen waves</h3>
               <p>
-                Built a benchmark suite that compares against all PETSc solver
-                types and all backends to evaluate performance tradeoffs.
+                Developed Julia simulation codes for non-diffracting acoustic
+                beams (frozen waves), published in the Journal of the
+                Acoustical Society of America (2026). My BEng thesis covered
+                simulating acoustic frozen waves with Julia in HPC
+                environments.
+              </p>
+              <p class="links">
+                <a class="text-link" href="https://doi.org/10.1121/10.0041951">JASA paper</a>
               </p>
             </article>
           </div>
@@ -117,7 +238,7 @@
 
     <footer class="site-footer">
       <div class="container">
-        <p>Hosted on GitHub Pages.</p>
+        <p>Hosted on GitHub Pages. Last updated November 2026.</p>
       </div>
     </footer>
   </body>
